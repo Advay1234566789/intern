@@ -3,38 +3,23 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const passport = require('passport');
-const session = require('express-session');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
-const User = require('./models/User');
+
 
 const app = express();
 const PORT = 5000;
 
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false
-}));
 
-// Passport configuration
-require('./config/passport')(passport);
-app.use(passport.initialize());
-app.use(passport.session());
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
+
+
 
 // MongoDB Connection
-mongoose.connect('mongodb://localhost:27017/yourdbname', {
+mongoose.connect('mongodb+srv://advay:advay@cluster0.gsco8.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-  .then((connection) => {
+  .then(() => {
     console.log('Connected to MongoDB');
-    console.log('Connected to database:', connection.connection.name); // Prints the database name
+   
   })
   .catch((err) => console.error('MongoDB connection error:', err));
 
