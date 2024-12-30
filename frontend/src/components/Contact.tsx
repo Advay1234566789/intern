@@ -47,7 +47,7 @@ export default function Contact() {
 
       // Send the contact data to your backend API for saving
       const response = await axios.post(
-        '',  // Replace with your actual backend endpoint
+        'https://intern-c9ma.onrender.com',  // Replace with your actual backend endpoint
         formData,
         { timeout: 20000 }  // Timeout after 10 seconds
       );
